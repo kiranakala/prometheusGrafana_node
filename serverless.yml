@@ -1,0 +1,22 @@
+service: prometheus-grafana
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+  deploymentBucket:
+    name: prometheusgrafanaaws
+ 
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+      - http:
+          path: /
+          method: ANY
+    environment:
+      PORT: 8000
