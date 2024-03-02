@@ -10,7 +10,8 @@ client.collectDefaultMetrics({ register });
 // Set up a map to store multiple meters
 
 // Middleware to parse JSON bodies
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use(express.json())
 
 const meters = {};
 
@@ -164,7 +165,7 @@ app.get('/metrics', async (req, res) => {
 
 const port = 8000;
 app.listen(port, () => {
-  console.log(`listening at http://localhost:${port}`);
+  console.log(`Server is listening at http://localhost:${port}`);
 });
 
 module.exports = app;
